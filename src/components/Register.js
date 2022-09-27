@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import DatePicker from "react-date-picker";
 export default function Login() {
 
   const [fname, setFname]=useState("");
@@ -18,9 +19,11 @@ export default function Login() {
 
   }
   const [error, setError]=useState(null);
+
   function checkEmail(email) {
       return /\S+@\S+\.\S+/.test(email);
   }
+
   function RegisterButton(){
     if (fname && lname && address && email && password && error === null)
       {return <button type="button">
@@ -32,7 +35,8 @@ export default function Login() {
     else {
       return <button type="button" disabled>Register</button>
     };
-}
+};
+const [value, setValue] = useState(new Date());
 
   return (
     
@@ -102,6 +106,15 @@ export default function Login() {
               placeholder="Enter Address"
             />
           </form>
+        </ul>
+      </div>
+
+      <div>
+        <ul>
+          Date of Birth
+          <p>
+            <DatePicker onChange={setValue} value={value} format="dd-MM-y" />
+          </p>
         </ul>
       </div>
 
