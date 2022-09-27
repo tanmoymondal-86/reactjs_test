@@ -12,20 +12,19 @@ export default function Login() {
     
     const newEntry = {email:email, password:password }
     setAllLogin([...allLogin, newEntry ])
-
   }
   const [error, setError]=useState(null);
   function checkEmail(email) {
       return /\S+@\S+\.\S+/.test(email);
-  }
+  };
 
   function LoginButton(){
     if (email && password && error===null)
-      {return <button type="button">
-        <Link className="nav-link active" aria-current="page" to='/' >
-          Login
-      </Link>
-    </button>
+      {return <div>
+        <form onClick={submit} >
+          <button type="button">Login</button>
+          </form>
+      </div>
     }
     else {
       return <button type="button" disabled>Login</button>
@@ -96,11 +95,9 @@ export default function Login() {
         </ul>  
       </div>
       <p></p>
-      <form action="" onSubmit={submit}>
         <ul>
           <LoginButton/>
         </ul>
-      </form>
     </div>
   );
 

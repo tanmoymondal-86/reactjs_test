@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DatePicker from "react-date-picker";
-export default function Login() {
+export default function Register() {
 
   const [fname, setFname]=useState("");
   const [lname, setLname]=useState("");
   const [address, setAddress]=useState("");
   const [email, setEmail]=useState("");
   const [password, setPassword]=useState("");
+  const [value, setValue] = useState(new Date());
   const [allData, setAllData]=useState([]);
-
+  
   const submit = (e) => {
 
     e.preventDefault();
     
-    const newEntry = {fname:fname, lname:lname, address:address, email:email, password:password }
+    const newEntry = {fname:fname, lname:lname, address:address, Date:value, email:email, password:password }
     setAllData([...allData, newEntry ])
 
   }
@@ -26,17 +27,16 @@ export default function Login() {
 
   function RegisterButton(){
     if (fname && lname && address && email && password && error === null)
-      {return <button type="button">
-        <Link className="nav-link active" aria-current="page" to='/' >
-          Register
-      </Link>
-    </button>
+      {return <form onClick={submit}>
+      <button type="button">Register</button>
+      </form>
+      
     }
     else {
       return <button type="button" disabled>Register</button>
     };
 };
-const [value, setValue] = useState(new Date());
+
 
   return (
     
@@ -112,9 +112,9 @@ const [value, setValue] = useState(new Date());
       <div>
         <ul>
           Date of Birth
-          <p>
+          <p></p>
             <DatePicker onChange={setValue} value={value} format="dd-MM-y" />
-          </p>
+          
         </ul>
       </div>
 
@@ -153,11 +153,9 @@ const [value, setValue] = useState(new Date());
         </ul>  
       </div>
       <p></p>
-      <form action="" onSubmit={submit}>
         <ul>
-        <RegisterButton/>
+          <RegisterButton/>
         </ul>
-      </form>
     </div>
   );
 
