@@ -159,10 +159,6 @@ export default function Register() {
         <ul>
           <RegisterButton/>
         </ul>
-          <div>
-
-
-          </div>
     </div>
   );
 
