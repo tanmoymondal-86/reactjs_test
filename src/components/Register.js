@@ -10,32 +10,35 @@ export default function Register() {
   const [password, setPassword]=useState("");
   const [value, setValue] = useState(new Date());
   const [allData, setAllData]=useState([]);
+  const [success,setSuccess] = useState(null);
+  const [error, setError]=useState(null);
   
   const submit = (e) => {
 
     e.preventDefault();
-    
-    const newEntry = {fname:fname, lname:lname, address:address, Date:value, email:email, password:password }
+    setSuccess(<p>Registration Success!!</p>);
+    const newEntry = {fname:fname, lname:lname, address:address, date:value, email:email, password:password }
     setAllData([...allData, newEntry ])
-
   }
-  const [error, setError]=useState(null);
+
 
   function checkEmail(email) {
       return /\S+@\S+\.\S+/.test(email);
   }
-
+ 
   function RegisterButton(){
-    if (fname && lname && address && email && password && error === null)
+    if (fname && lname && address && value && email && password && error === null)
       {return <form onClick={submit}>
       <button type="button">Register</button>
-      </form>
-      
+      {success}
+      </form>   
     }
     else {
       return <button type="button" disabled>Register</button>
     };
+
 };
+
 
 
   return (
@@ -156,6 +159,10 @@ export default function Register() {
         <ul>
           <RegisterButton/>
         </ul>
+          <div>
+
+
+          </div>
     </div>
   );
 

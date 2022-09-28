@@ -5,11 +5,11 @@ export default function Login() {
   const [email, setEmail]=useState("");
   const [password, setPassword]=useState("");
   const [allLogin, setAllLogin]=useState([]);
-
+  const [success,setSuccess] = useState(null);
   const submit = (e) => {
 
     e.preventDefault();
-    
+    setSuccess(<p>Login Success!!</p>);
     const newEntry = {email:email, password:password }
     setAllLogin([...allLogin, newEntry ])
   }
@@ -23,6 +23,7 @@ export default function Login() {
       {return <div>
         <form onClick={submit} >
           <button type="button">Login</button>
+          {success}
           </form>
       </div>
     }
@@ -58,7 +59,7 @@ export default function Login() {
         <ul>
           <h1>Login Page</h1>
         </ul>
-    </div>
+      </div>
 
       <div>
         <ul>
